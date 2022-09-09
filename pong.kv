@@ -1,11 +1,20 @@
-
+#:kivy 1.0.9
 
 #The name of this file must match the name of the app,
 #e.g. PongApp (the part before the App ending).
 
-#:kivy 1.0.9
+
+
+<PongBall>:
+    size: 50,50
+    canvas:
+        Ellipse:
+            pos: self.pos
+            size: self.size
 
 <PongGame>:
+    ball: pong_ball
+    
     canvas:
         Rectangle:
             pos: self.center_x - 5, 0
@@ -20,3 +29,7 @@
         center_x: root.width*3/4
         top: root.top - 50
         text: "0"
+
+    PongBall:
+        id: pong_ball
+        center: self.parent.center
