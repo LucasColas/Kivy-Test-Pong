@@ -7,8 +7,8 @@
     BoxLayout:
         Button:
             text: 'Play'
-            on_press: root.manager.current = 'PongGame'
-        
+            on_press: root.manager.current = 'Pong'; root.manager.get_screen("Pong").game.serve_ball()
+
 
 <PongBall>:
     size: 50,50
@@ -28,6 +28,7 @@
     ball: pong_ball
     player1: player_left
     player2: player_right
+
 
     canvas:
         Rectangle:

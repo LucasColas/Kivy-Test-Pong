@@ -104,6 +104,7 @@ class GameScreen(Screen):
 
 
 
+
 class PongApp(App):
     def build(self):
         """
@@ -114,7 +115,7 @@ class PongApp(App):
         """
         sm = ScreenManager()
         sm.add_widget(MenuScreen(name='menu'))
-        sm.add_widget(GameScreen(name='PongGame'))
+        sm.add_widget(GameScreen(name='Pong'))
         return sm
 
 if __name__ == '__main__':
