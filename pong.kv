@@ -6,7 +6,7 @@
 <MenuScreen>:
     canvas.before:
         Color:
-            rgba: (1,1,1,1)
+            rgba: (250, 0, 100,1)
 
         Rectangle:
             pos: self.pos
@@ -14,7 +14,7 @@
 
     BoxLayout:
         Button:
-            background_color: 1.0, 1.0, 1.0, 1
+            background_color: 250, 0, 100, 1
             text: 'Click to Play'
             on_press: root.manager.current = 'Pong'; root.manager.get_screen("Pong").game.serve_ball()
             font_size: '120sp'
