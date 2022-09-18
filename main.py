@@ -9,11 +9,6 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from random import randint
 
 
-"""
-TODO :
-screen Manager : https://kivy.org/doc/stable/api-kivy.uix.screenmanager.html
-
-"""
 
 class PongPaddle(Widget):
     score = NumericProperty(0)
@@ -39,6 +34,7 @@ class PongBall(Widget):
 
 
 
+
 class PongGame(Widget):
     ball = ObjectProperty(None)
 
@@ -56,13 +52,38 @@ class PongGame(Widget):
 
     def _on_keyboard_down(self, keyboard, keycode, text, modifiers):
         if keycode[1] == 'w':
-            self.player1.center_y += 10
+
+            self.player1.y += 10
+            #print(type(self.player1.size))
+            #print("y : ", self.player1.y)
+            #print("height : ", self.height)
+            #print(self.player1.y - self.player1.size[1])
+            if self.player1.y + self.player1.size[1] > self.height:
+                self.player1.y = self.height-self.player1.size[1]
+
+
         elif keycode[1] == 's':
-            self.player1.center_y -= 10
+            self.player1.y -= 10
+            #print(self.player1.center_y)
+            #print(self.y)
+            #print(self.player1.y)
+            #print(self.player1.size[1])
+            if self.player1.y < self.y:
+                self.player1.y = self.y
+
+
         elif keycode[1] == 'up':
-            self.player2.center_y += 10
+            self.player2.y += 10
+            if self.player2.y + self.player2.size[1] > self.height:
+                self.player2.y = self.height-self.player2.size[1]
+
+
+
         elif keycode[1] == 'down':
             self.player2.center_y -= 10
+            if self.player2.y < self.y:
+                self.player2.y = self.y
+
         return True
 
     def serve_ball(self, vel=(4, 0)):
@@ -81,6 +102,7 @@ class PongGame(Widget):
         if self.ball.x < self.x:
             self.player2.score += 1
             self.serve_ball(vel=(4, 0))
+
         if self.ball.right > self.width:
             self.player1.score += 1
             self.serve_ball(vel=(-4, 0))
