@@ -113,8 +113,7 @@ class PongGame(Widget):
             if touch.x > self.width - self.width / 3:
                 self.player2.center_y = touch.y
 
-class MenuScreen(Screen):
-    pass
+
 
 class GameScreen(Screen):
     def __init__(self, **kwargs):
